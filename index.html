@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
   <title>Moments by ReferralCandy</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,14 +13,14 @@
       --text-tertiary: #9CA3AF;
       --surface: #FFFFFF;
       --border: #E5E7EB;
-      --coral: #E8612A;
-      --amber: #D97706;
-      --amber-bg: #FFF8E1;
-      --amber-border: #FDE68A;
-      --teal: #0D9488;
-      --teal-bg: #F0FDFA;
-      --blue: #2563EB;
-      --blue-bg: #EFF6FF;
+      --coral: #FF0E8B;
+      --amber: #FF0E8B;
+      --amber-bg: #FFF0F7;
+      --amber-border: #FFB3D9;
+      --teal: #286FFA;
+      --teal-bg: #EBF1FF;
+      --blue: #286FFA;
+      --blue-bg: #EBF1FF;
       --success: #059669;
     }
 
@@ -302,8 +301,8 @@
       font-family: inherit;
       font-size: 15px;
       font-weight: 500;
-      background: #FEF3C7;
-      color: #92400E;
+      background: var(--amber-bg);
+      color: #9B0054;
       border: 1px solid var(--amber-border);
       border-radius: 8px;
       padding: 10px 20px;
@@ -312,7 +311,7 @@
       white-space: nowrap;
       margin-left: 20px;
     }
-    .urgent-btn:hover { background: #FDE68A; }
+    .urgent-btn:hover { background: var(--amber-border); }
     .urgent-card.handled .urgent-btn { display: none; }
     .urgent-meta {
       display: flex;
@@ -468,6 +467,16 @@
       background: #F3F4F6;
       color: var(--text-tertiary);
     }
+    .card-view-link {
+      display: block;
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-top: 14px;
+      transition: color 0.15s;
+    }
+    .story-card:hover .card-view-link { color: var(--coral); }
+    .story-card.actioned .card-view-link,
+    .story-card.dismissed .card-view-link { display: none; }
 
     /* ===== Stat Bar ===== */
     .stat-bar {
@@ -806,7 +815,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px 28px;
+      padding: 28px 28px 24px;
     }
     .breakdown-title {
       font-size: 15px;
@@ -816,7 +825,7 @@
     }
     .breakdown-bar {
       display: flex;
-      height: 32px;
+      height: 36px;
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 14px;
@@ -829,21 +838,24 @@
       font-weight: 600;
       color: #fff;
       transition: flex 0.3s;
+      overflow: hidden;
+      white-space: nowrap;
     }
     .breakdown-segment.single { background: #E5E7EB; color: var(--text-secondary); }
-    .breakdown-segment.repeat { background: #93C5FD; color: #1E40AF; }
-    .breakdown-segment.actionable { background: var(--coral); }
+    .breakdown-segment.repeat { background: var(--blue); color: #fff; }
+    .breakdown-segment.actionable { background: var(--coral); color: #fff; }
     .breakdown-legend {
       display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
     .breakdown-legend-item {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 13px;
       color: var(--text-secondary);
+      white-space: nowrap;
     }
     .breakdown-legend-dot {
       width: 10px;
@@ -852,7 +864,7 @@
       flex-shrink: 0;
     }
     .breakdown-legend-dot.single { background: #E5E7EB; }
-    .breakdown-legend-dot.repeat { background: #93C5FD; }
+    .breakdown-legend-dot.repeat { background: #286FFA; }
     .breakdown-legend-dot.actionable { background: var(--coral); }
 
     /* -- Insight cards with hero stats -- */
@@ -1505,7 +1517,7 @@
 
 <!-- Top Nav -->
 <div class="top-nav">
-  <div class="top-nav-logo"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="13" r="11" fill="#E8612A"/><rect x="14.5" y="22" width="3" height="9" rx="1.5" fill="#E8612A"/><circle cx="16" cy="13" r="7" fill="#fff" opacity="0.25"/><circle cx="13" cy="11" r="2.5" fill="#fff" opacity="0.4"/></svg> ReferralCandy</div>
+  <div class="top-nav-logo"><img src="https://cdn.referralcandy.com/webflow/logo-referralcandy.webp" alt="ReferralCandy" style="height: 22px; width: auto; filter: brightness(0) invert(1);"></div>
   <div class="top-nav-links">
     <span class="top-nav-link">Dashboard</span>
     <span class="top-nav-link">Advocates</span>
@@ -1552,17 +1564,12 @@
       <div class="stat-divider"></div>
       <div class="stat-item">
         <div class="stat-value alert" id="stat-risk">$966</div>
-        <div class="stat-label">revenue at risk</div>
+        <div class="stat-label">worth double-checking</div>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
         <div class="stat-value">13</div>
-        <div class="stat-label">moments surfaced</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-value success">13</div>
-        <div class="stat-label">suggested actions</div>
+        <div class="stat-label">moments to review</div>
       </div>
     </div>
 
@@ -1580,8 +1587,8 @@
           <div class="urgent-name"><span class="urgent-check">&#10003;</span>Sarah M.</div>
           <div class="urgent-desc">Two identical mat orders placed 4 hours apart</div>
           <div class="urgent-meta">
-            <span class="urgent-pill duplicate">Likely duplicate</span>
-            <span class="urgent-pill amount">$354 at risk</span>
+            <span class="urgent-pill duplicate">Similar orders</span>
+            <span class="urgent-pill amount">$354, worth checking</span>
             <span class="urgent-pill time">Feb 20</span>
           </div>
         </div>
@@ -1592,10 +1599,10 @@
       <div class="urgent-card" id="urgent-2" onclick="openModal('modal-9370622')">
         <div class="urgent-left">
           <div class="urgent-name"><span class="urgent-check">&#10003;</span>Nicole T.</div>
-          <div class="urgent-desc">Identical Checker Toffee set ordered twice &mdash; $612</div>
+          <div class="urgent-desc">Identical Checker Toffee set ordered twice, $612</div>
           <div class="urgent-meta">
-            <span class="urgent-pill duplicate">Likely duplicate</span>
-            <span class="urgent-pill amount">$612 at risk</span>
+            <span class="urgent-pill duplicate">Similar orders</span>
+            <span class="urgent-pill amount">$612, worth checking</span>
             <span class="urgent-pill time">Feb 24&ndash;26</span>
           </div>
         </div>
@@ -1618,7 +1625,8 @@
         </div>
         <div class="card-hero">Probably not a parent</div>
         <div class="card-detail">137 orders in 3 years, 53 designs</div>
-        <div class="card-summary">Ordering play mats every few days across dozens of designs. Almost certainly a daycare or retailer &mdash; worth a wholesale conversation.</div>
+        <div class="card-summary">Ordering play mats every few days across dozens of designs. Almost certainly a daycare or retailer, worth a wholesale conversation.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag prompt">Reach out</span>
       </div>
 
@@ -1631,7 +1639,8 @@
         </div>
         <div class="card-hero">A Mudcloth family</div>
         <div class="card-detail">6 orders over 4.5 years, same design</div>
-        <div class="card-summary">From nursing pillow to play tent &mdash; every order in Mudcloth. This loyalty is rare and worth a personal touch.</div>
+        <div class="card-summary">From nursing pillow to play tent, every order in Mudcloth. This loyalty is rare and worth a personal touch.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag gift">Gift opportunity</span>
       </div>
 
@@ -1644,6 +1653,7 @@
         <div class="card-hero">Growing trust, every order</div>
         <div class="card-detail">$158 &rarr; $372 &rarr; $618 &rarr; $740</div>
         <div class="card-summary">Four Checker orders in 14 months, each bigger than the last. Latest is nearly 5x her first purchase.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1656,7 +1666,8 @@
         </div>
         <div class="card-hero">Loyalty through friction</div>
         <div class="card-detail">6 orders in 3 months, including 3 failed reorders</div>
-        <div class="card-summary">Navigated a difficult playpen sequence &mdash; three $0 reorder attempts before resolution &mdash; then came back for enrichment accessories. Patience worth acknowledging.</div>
+        <div class="card-summary">Navigated a difficult playpen sequence (three $0 reorder attempts before resolution), then came back for enrichment accessories. Patience worth acknowledging.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag gift">Gift opportunity</span>
       </div>
 
@@ -1668,7 +1679,8 @@
         </div>
         <div class="card-hero">7 cubes in 21 days</div>
         <div class="card-detail">Epic mat &rarr; 4 cubes &rarr; 3 cubes + blanket</div>
-        <div class="card-summary">Cadence accelerated sharply on the latest order. A cube collector mid-build &mdash; the kind of customer who&rsquo;d notice being noticed.</div>
+        <div class="card-summary">Cadence accelerated sharply on the latest order. A cube collector mid-build, the kind of customer who&rsquo;d notice being noticed.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1676,7 +1688,7 @@
 
     <!-- More Moments -->
     <div class="stories-label">Good to know</div>
-    <div style="font-size: 13px; color: var(--text-secondary); margin-top: -12px; margin-bottom: 16px;">Real patterns we spotted &mdash; act on these when you have a moment</div>
+    <div style="font-size: 13px; color: var(--text-secondary); margin-top: -12px; margin-bottom: 16px;">Real patterns we spotted. Act on these when you have a moment</div>
     <div class="card-grid">
 
       <!-- Card 6: Jen H. (inform, no dot) -->
@@ -1688,6 +1700,7 @@
         <div class="card-hero">A child grew up with your brand</div>
         <div class="card-detail">Back after 4.3 years for a play tent</div>
         <div class="card-summary">Floor mats for an infant in 2021, now a play tent for a child. The brand lived in her memory for years.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1699,7 +1712,8 @@
         </div>
         <div class="card-hero">The Sage comeback</div>
         <div class="card-detail">4 orders in 85 days after 2 years away</div>
-        <div class="card-summary">Went silent for 659 days, then came back with conviction &mdash; every order in Sage, now expanding outdoors.</div>
+        <div class="card-summary">Went silent for 659 days, then came back with conviction. Every order in Sage, now expanding outdoors.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1711,7 +1725,8 @@
         </div>
         <div class="card-hero">Matcha to Toffee</div>
         <div class="card-detail">Same design at 3 sizes, then a full pivot</div>
-        <div class="card-summary">Checker Matcha in Standard, Mega, then Epic &mdash; then switched entirely to Checker Toffee. She explored one aesthetic fully before moving on.</div>
+        <div class="card-summary">Checker Matcha in Standard, Mega, then Epic, before switching entirely to Checker Toffee. She explored one aesthetic fully before moving on.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1724,6 +1739,7 @@
         <div class="card-hero">Back after 3 years of silence</div>
         <div class="card-detail">82 days of activity after a 1,100-day gap</div>
         <div class="card-summary">Initial mat purchase, then nothing for 3 years. Two rapid orders post-reactivation. The return itself is the signal.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1735,7 +1751,8 @@
         </div>
         <div class="card-hero">Quiet return to the value range</div>
         <div class="card-detail">389 days between orders</div>
-        <div class="card-summary">Came back after a year, this time choosing the Imperfect/value range. A quiet welcome back &mdash; no ask, no explanation needed.</div>
+        <div class="card-summary">Came back after a year, this time choosing the Imperfect/value range. A quiet welcome back. No ask, no explanation needed.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1748,6 +1765,7 @@
         <div class="card-hero">From mats to accessories</div>
         <div class="card-detail">653 days between orders</div>
         <div class="card-summary">Mat-focused history, then a long gap, then returned with an accessory purchase. The product system brought her back.</div>
+        <span class="card-view-link">View story &rarr;</span>
         <span class="card-action-tag inform">Send note</span>
       </div>
 
@@ -1760,7 +1778,7 @@
 
     <div class="insights-header">
       <div class="insights-headline">Tokikids Customer Insights</div>
-      <div class="insights-subtitle">Building over time &middot; 231 customers analyzed &middot; 6 unique customers surfaced across 3 insights</div>
+      <div class="insights-subtitle">Building over time &middot; 231 customers analyzed &middot; 8 unique customers surfaced across 3 insights</div>
     </div>
 
     <!-- Customer Breakdown -->
@@ -1768,22 +1786,22 @@
       <div class="insights-section-title">Your 231 customers</div>
       <div class="customer-breakdown">
         <div class="breakdown-bar">
-          <div class="breakdown-segment single" style="flex: 183;">183</div>
-          <div class="breakdown-segment repeat" style="flex: 35;">35</div>
-          <div class="breakdown-segment actionable" style="flex: 13;">13</div>
+          <div class="breakdown-segment single" style="flex: 183;">183 (79%)</div>
+          <div class="breakdown-segment repeat" style="flex: 35;">35 (15%)</div>
+          <div class="breakdown-segment actionable" style="flex: 13;"></div>
         </div>
         <div class="breakdown-legend">
           <div class="breakdown-legend-item">
             <div class="breakdown-legend-dot single"></div>
-            <span><strong>183</strong> single purchase &mdash; not enough signal yet</span>
+            <span>183 Single purchase</span>
           </div>
           <div class="breakdown-legend-item">
             <div class="breakdown-legend-dot repeat"></div>
-            <span><strong>35</strong> repeat, no action needed &mdash; healthy relationships</span>
+            <span>35 Repeat, no action needed</span>
           </div>
           <div class="breakdown-legend-item">
             <div class="breakdown-legend-dot actionable"></div>
-            <span><strong>13</strong> actionable right now &mdash; see This Week tab</span>
+            <span>13 Actionable now</span>
           </div>
         </div>
       </div>
@@ -1812,7 +1830,7 @@
             <div class="insights-hero-unit">orders</div>
           </div>
           <div class="insights-card-content">
-            <div class="insights-card-title">Customer #6656962461950 &mdash; an unrecognised wholesale channel</div>
+            <div class="insights-card-title">Customer #6656962461950: an unrecognised wholesale channel</div>
             <div class="insights-card-body">
               One account has placed 137 orders over 3 years, operating as a commercial buyer on a consumer account. Three distinct purchasing phases: bulk Imperfect stock (2023&ndash;mid-2024), transition to full-price standard mats, then narrowing to Cloud + Sandcastle SKUs. Mean order cadence of ~8 days.
             </div>
@@ -1830,9 +1848,9 @@
             <div class="insights-hero-unit">colourways</div>
           </div>
           <div class="insights-card-content">
-            <div class="insights-card-title">Emma L., Nicole T. &amp; 1 more &mdash; building environments, not routines</div>
+            <div class="insights-card-title">Emma L., Nicole T. &amp; 1 more: building environments, not routines</div>
             <div class="insights-card-body">
-              Tokikids customers signal loyalty through <strong>expansion</strong> &mdash; more SKUs, more categories, deeper into specific aesthetics. The natural moment isn&rsquo;t &ldquo;you&rsquo;re due for a refill&rdquo; &mdash; it&rsquo;s &ldquo;you&rsquo;ve been building something, and we noticed.&rdquo;
+              Tokikids customers signal loyalty through <strong>expansion</strong>: more SKUs, more categories, deeper into specific aesthetics. The natural moment isn&rsquo;t &ldquo;you&rsquo;re due for a refill&rdquo; but &ldquo;you&rsquo;ve been building something, and we noticed.&rdquo;
             </div>
             <div style="margin-top: 12px; padding: 10px 14px; background: #F9FAFB; border-radius: 8px; font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
               <strong style="color: var(--text);">Customers:</strong> Emma L. (6 Mudcloth orders over 5 years), Nicole T. (Checker Matcha &rarr; Mega &rarr; Epic, then Toffee pivot), plus 1 more (7 cubes in 21 days). Three distinct colourway clusters across your repeat base.
@@ -1848,7 +1866,7 @@
             <div class="insights-hero-unit">day gap</div>
           </div>
           <div class="insights-card-content">
-            <div class="insights-card-title">4 customers returned after 1&ndash;4 year gaps &mdash; long gaps are normal</div>
+            <div class="insights-card-title">4 customers returned after 1&ndash;4 year gaps. Long gaps are normal</div>
             <div class="insights-card-body">
               Multiple customers returned after extended gaps with no prompting. Your repurchase window is measured in years, not months.
             </div>
@@ -1865,7 +1883,7 @@
               </div>
             </div>
             <div style="margin-top: 24px; padding: 10px 14px; background: #F9FAFB; border-radius: 8px; font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-              <strong style="color: var(--text);">Customers:</strong> 4 customers returned after 357, 653, 659, and 848 days respectively. One expanded from mats to outdoor picnic blankets. Another returned to the Imperfect/value range. None received win-back campaigns.
+              <strong style="color: var(--text);">Customers:</strong> 4 customers returned after 357, 653, 659, and 848 days respectively. One expanded from mats to outdoor picnic blankets. Another returned to the Imperfect/value range.
             </div>
           </div>
         </div>
@@ -1878,9 +1896,9 @@
 
       <div class="insights-card strategic">
         <div class="insights-action-label consider">Consider</div>
-        <div class="insights-card-title">Adjust your Klaviyo win-back timing</div>
+        <div class="insights-card-title">Add a longer-window win-back flow in Klaviyo</div>
         <div class="insights-card-body">
-          If you have automated win-back emails at 60 or 90 days, they&rsquo;re reaching customers mid-cycle. For Tokikids, &ldquo;lapsed&rdquo; is probably <strong>18&ndash;24 months</strong>. A quick Klaviyo flow adjustment could stop premature emails and catch real re-engagement moments.
+          Your data shows customers returning after 1&ndash;4 years. Consider adding a win-back flow at the <strong>18&ndash;24 month</strong> mark alongside your existing ones. A good starting segment: customers with 2+ orders whose last purchase was over 12 months ago. These are proven repeat buyers with a track record, not cold leads.
         </div>
         <div style="margin-top: 10px; font-size: 13px; color: var(--text-tertiary);">Derived from: Long gaps insight above</div>
       </div>
@@ -1889,7 +1907,7 @@
         <div class="insights-action-label consider">Consider</div>
         <div class="insights-card-title">Create colourway segments in Klaviyo</div>
         <div class="insights-card-body">
-          Your collectors cluster around specific aesthetics. A &ldquo;Mudcloth collectors&rdquo; segment could power targeted messaging when you release new Mudcloth products &mdash; these customers are the most likely to buy on day one.
+          Your collectors cluster around specific aesthetics. A &ldquo;Mudcloth collectors&rdquo; segment could power targeted messaging when you release new Mudcloth products. These customers are the most likely to buy on day one.
         </div>
         <div style="margin-top: 10px; font-size: 13px; color: var(--text-tertiary);">Derived from: Environment builders insight above</div>
       </div>
@@ -1898,9 +1916,9 @@
         <div class="insights-action-label watch">Watch</div>
         <div class="insights-card-title">Track the mat &rarr; accessories &rarr; furniture pipeline</div>
         <div class="insights-card-body">
-          Your strongest repeat customers follow this arc. Understanding how many make each transition &mdash; and how long it takes &mdash; could shape post-purchase email timing and product launch strategy.
+          Your strongest repeat customers follow this arc. Understanding how many make each transition, and how long it takes, could shape post-purchase email timing and product launch strategy.
         </div>
-        <div style="margin-top: 10px; font-size: 13px; color: var(--text-tertiary);">Derived from: 5 of your 13 actionable customers show this pattern</div>
+        <div style="margin-top: 10px; font-size: 13px; color: var(--text-tertiary);">Derived from: Emma L. (pillow &rarr; tent), David R. (mat &rarr; cubes), Clare W. (mats &rarr; accessories), Jen H. (mats &rarr; tent), Lisa M. (playpen &rarr; accessories)</div>
       </div>
     </div>
 
@@ -1950,7 +1968,7 @@
       </tr>
       <tr class="ac-expand-row" id="ac-expand-0">
         <td colspan="6" class="ac-expand-cell"><div class="ac-expand-inner">
-            Identical Checker Toffee set ordered on Feb 24 and Feb 26. Likely a duplicate.<br><a class="ac-expand-link" onclick="openModal('modal-9370622')">View full story &rarr;</a>
+            Identical Checker Toffee set ordered on Feb 24 and Feb 26. Worth a quick check-in.<br><a class="ac-expand-link" onclick="openModal('modal-9370622')">View full story &rarr;</a>
           </div></td>
       </tr>
       <tr class="ac-actioned" data-action="prompt" data-date="2026-02-26" data-orders="3" data-total="632.78" id="ac-row-1" onclick="toggleAcRow('ac-row-1')">
@@ -2495,7 +2513,7 @@
       </tr>
       <tr class="ac-expand-row" id="ac-expand-65">
         <td colspan="6" class="ac-expand-cell"><div class="ac-expand-inner">
-            Returned after 389 days for a picnic blanket &mdash; first outdoor product after five indoor purchases.
+            Returned after 389 days for a picnic blanket. First outdoor product after five indoor purchases.
           </div></td>
       </tr>
       <tr class="ac-actioned" data-action="inform" data-date="2026-02-24" data-orders="2" data-total="584.52" id="ac-row-66" onclick="toggleAcRow('ac-row-66')">
@@ -2508,7 +2526,7 @@
       </tr>
       <tr class="ac-expand-row" id="ac-expand-66">
         <td colspan="6" class="ac-expand-cell"><div class="ac-expand-inner">
-            Returned after 2.5 years and upgraded from Standard to a $584 Epic &mdash; 2.4x original order value.
+            Returned after 2.5 years and upgraded from Standard to a $584 Epic, 2.4x original order value.
           </div></td>
       </tr>
       <tr class="ac-actioned" data-action="inform" data-date="2026-02-24" data-orders="2" data-total="584.51" id="ac-row-67" onclick="toggleAcRow('ac-row-67')">
@@ -2792,7 +2810,7 @@
       </tr>
       <tr class="ac-expand-row" id="ac-expand-99">
         <td colspan="6" class="ac-expand-cell"><div class="ac-expand-inner">
-            Mega to Epic to maintenance &mdash; 2.5 years in the Mudcloth ecosystem. Now buying foam inserts and covers.
+            Mega to Epic to maintenance. 2.5 years in the Mudcloth ecosystem. Now buying foam inserts and covers.
           </div></td>
       </tr>
       <tr class="ac-actioned" data-action="inform" data-date="2026-02-23" data-orders="4" data-total="740.02" id="ac-row-100" onclick="toggleAcRow('ac-row-100')">
@@ -3134,7 +3152,7 @@
       </tr>
       <tr class="ac-expand-row" id="ac-expand-138">
         <td colspan="6" class="ac-expand-cell"><div class="ac-expand-inner">
-            Returned after 3.5 years for a bean bag and play tent. The child outgrew mats &mdash; the brand didn't.
+            Returned after 3.5 years for a bean bag and play tent. The child outgrew mats, but the brand didn't.
           </div></td>
       </tr>
       <tr class="ac-plain" data-action="no_action" data-date="2026-02-22" data-orders="3" data-total="347.44" id="ac-row-139">
@@ -3655,11 +3673,11 @@
         <td class="right">$354</td>
         <td>Feb 20</td>
         <td><span class="ac-tag protect">Protect</span></td>
-        <td><span class="ac-insight">Same-day duplicate orders for the same product at slightly different prices ($332 vs $353); possi...</span></td>
+        <td><span class="ac-insight">Two similar orders for the same product at slightly different prices ($332 vs $353); worth a check-...</span></td>
       </tr>
       <tr class="ac-expand-row" id="ac-expand-203">
         <td colspan="6" class="ac-expand-cell"><div class="ac-expand-inner">
-            Same Sand Vegan Leather Mat ordered twice on Feb 20, four hours apart. Almost certainly accidental.<br><a class="ac-expand-link" onclick="openModal('modal-3210238')">View full story &rarr;</a>
+            Same Sand Vegan Leather Mat ordered twice on Feb 20, four hours apart. Worth a quick check-in.<br><a class="ac-expand-link" onclick="openModal('modal-3210238')">View full story &rarr;</a>
           </div></td>
       </tr>
       <tr class="ac-plain" data-action="no_action" data-date="2026-02-20" data-orders="6" data-total="231.65" id="ac-row-204">
@@ -3894,39 +3912,39 @@
         <div class="teaser-badge">Coming soon</div>
         <div class="teaser-title">Customer Watchlist</div>
         <div class="teaser-desc">
-          Some customers don't need action now &mdash; but are worth watching. The Watchlist tracks customers approaching a nudge-worthy moment.
+          Some customers don't need action now, but are worth watching. The Watchlist tracks customers approaching a nudge-worthy moment.
         </div>
 
         <div class="teaser-examples">
           <div class="teaser-example">
             <div class="teaser-example-dot" style="background: var(--amber);"></div>
             <div class="teaser-example-text">
-              <div class="teaser-example-name">Megan R. &mdash; overdue check-in</div>
-              <div class="teaser-example-desc">She orders every 3 months &mdash; it&rsquo;s been 5. Last order was a Checker Matcha Mega.</div>
+              <div class="teaser-example-name">Megan R., overdue check-in</div>
+              <div class="teaser-example-desc">She orders every 3 months, but it&rsquo;s been 5. Last order was a Checker Matcha Mega.</div>
               <div class="teaser-example-trigger">Month 6 &rarr; check in</div>
             </div>
           </div>
           <div class="teaser-example">
             <div class="teaser-example-dot" style="background: var(--blue);"></div>
             <div class="teaser-example-text">
-              <div class="teaser-example-name">Jasmine K. &mdash; life-stage transition</div>
-              <div class="teaser-example-desc">Bought infant playmats in Feb 2024 &mdash; her child is likely a toddler now.</div>
+              <div class="teaser-example-name">Jasmine K., life-stage transition</div>
+              <div class="teaser-example-desc">Bought infant playmats in Feb 2024. Her child is likely a toddler now.</div>
               <div class="teaser-example-trigger">2-year mark &rarr; suggest toddler products</div>
             </div>
           </div>
           <div class="teaser-example">
             <div class="teaser-example-dot" style="background: var(--teal);"></div>
             <div class="teaser-example-text">
-              <div class="teaser-example-name">Danielle H. &mdash; loyalty milestone</div>
-              <div class="teaser-example-desc">4 orders over 3 years, same colourway &mdash; her next purchase would be her 5th.</div>
+              <div class="teaser-example-name">Danielle H., loyalty milestone</div>
+              <div class="teaser-example-desc">4 orders over 3 years, same colourway. Her next purchase would be her 5th.</div>
               <div class="teaser-example-trigger">7th order &rarr; personal thank-you</div>
             </div>
           </div>
           <div class="teaser-example">
             <div class="teaser-example-dot" style="background: var(--text-tertiary);"></div>
             <div class="teaser-example-text">
-              <div class="teaser-example-name">Tina F. &mdash; replacement cycle</div>
-              <div class="teaser-example-desc">Bought play mat covers 18 months ago &mdash; typical wear says her replacements are due.</div>
+              <div class="teaser-example-name">Tina F., replacement cycle</div>
+              <div class="teaser-example-desc">Bought play mat covers 18 months ago. Typical wear says her replacements are due.</div>
               <div class="teaser-example-trigger">18&ndash;24 months &rarr; replacement reminder</div>
             </div>
           </div>
@@ -3939,7 +3957,7 @@
   </div><!-- /tab-watchlist -->
 
 
-  <div class="disclosure">Customer names shown are placeholders &mdash; all patterns are derived from real order data (Feb 20&ndash;26, 2026).</div>
+  <div class="disclosure">Customer names shown are placeholders. All patterns are derived from real order data (Feb 20&ndash;26, 2026).</div>
 
 </div><!-- /app -->
 
@@ -3953,26 +3971,26 @@
     <div class="modal-left">
       <div class="modal-hero-area">
         <div class="modal-hero-name">SARAH M.</div>
-        <div class="modal-hero-phrase">Possible duplicate order</div>
-        <div class="modal-hero-detail">Same mat, 4 hours apart &mdash; $354 at risk</div>
+        <div class="modal-hero-phrase">Similar orders close together</div>
+        <div class="modal-hero-detail">Same mat, 4 hours apart, $354</div>
         <div class="modal-when-tag">Ordered 20 Feb</div>
       </div>
-      <div class="modal-insight">Two identical Sand Vegan Leather Mat orders on the same day, just 4 hours apart. Almost certainly an accidental double-tap &mdash; worth checking before both ship.</div>
+      <div class="modal-insight">Two identical Sand Vegan Leather Mat orders on the same day, 4 hours apart. Could be intentional, but worth a quick check-in before both ship.</div>
       <div class="modal-action-area">
         <div class="modal-draft-box">
           <div class="modal-draft-header"><span class="modal-draft-label">Draft message</span><span class="modal-draft-hint">click to edit</span></div>
-          <div class="modal-draft-text" contenteditable="true">Hi Sarah, we noticed two identical mat orders from today &mdash; did you mean to order two, or was one a duplicate? Happy to cancel the extra one before it ships.</div>
+          <div class="modal-draft-text" contenteditable="true">Hi Sarah, just checking in. We noticed two mat orders from today and wanted to make sure everything looks right on your end. Let us know if you'd like to make any changes before they ship!</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-3210238">
           <button class="modal-intent-pill" onclick="selectIntent('3210238', 'protect', null, 'contact', 'Will contact customer')">Contact customer</button>
           <button class="modal-intent-pill" onclick="selectIntent('3210238', 'protect', null, 'handled', 'Already handled')">Already handled</button>
-          <button class="modal-intent-pill dismiss" onclick="selectIntent('3210238', 'protect', null, 'not-duplicate', 'Not a duplicate')">Not a duplicate</button>
+          <button class="modal-intent-pill dismiss" onclick="selectIntent('3210238', 'protect', null, 'not-duplicate', 'All good, no action')">Looks fine</button>
         </div>
         <div class="modal-intent-confirm" id="confirm-3210238">
           <div class="modal-intent-confirm-label"><span class="check">&#10003;</span><span id="confirm-text-3210238"></span></div>
           <div class="modal-note-label">What did you decide to do? (optional)</div>
-          <textarea class="modal-note-input" placeholder="e.g. Contacted via email, confirmed duplicate"></textarea>
+          <textarea class="modal-note-input" placeholder="e.g. Contacted via email, customer confirmed both orders"></textarea>
           <button class="modal-done-btn" onclick="handleModalAction('modal-3210238', 'protect', null, pendingIntent)">Done</button>
         </div>
       </div>
@@ -3994,7 +4012,7 @@
             <div class="order-date">20 Feb 2026, 4:06 PM</div>
             <div class="order-products">Sand Vegan Leather Mat - Mega &times;1</div>
             <div class="order-amount">$354</div>
-            <div class="order-duplicate-tag">likely duplicate</div>
+            <div class="order-duplicate-tag">similar order</div>
           </div>
           <span class="order-gap-pill">+4 hours</span>
         </div>
@@ -4011,26 +4029,26 @@
     <div class="modal-left">
       <div class="modal-hero-area">
         <div class="modal-hero-name">NICOLE T.</div>
-        <div class="modal-hero-phrase">Likely duplicate &mdash; $612</div>
+        <div class="modal-hero-phrase">Similar orders, $612</div>
         <div class="modal-hero-detail">Identical 4-item set, 48 hours apart</div>
         <div class="modal-when-tag">Ordered 24 &amp; 26 Feb</div>
       </div>
-      <div class="modal-insight">Same Checker Toffee set &mdash; mat, 2 cubes, pillow &mdash; ordered twice within 48 hours at slightly different totals ($594 vs $613). Almost certainly a duplicate.</div>
+      <div class="modal-insight">Same Checker Toffee set (mat, 2 cubes, pillow) ordered twice within 48 hours at slightly different totals ($594 vs $613). Could be intentional, but close enough to be worth a check-in.</div>
       <div class="modal-action-area">
         <div class="modal-draft-box">
           <div class="modal-draft-header"><span class="modal-draft-label">Draft message</span><span class="modal-draft-hint">click to edit</span></div>
-          <div class="modal-draft-text" contenteditable="true">Hi Nicole, we noticed two identical orders for the Checker Toffee set &mdash; did you mean to place both, or was one accidental? We can cancel the duplicate before it ships.</div>
+          <div class="modal-draft-text" contenteditable="true">Hi Nicole, just checking in. We noticed two orders for the Checker Toffee set and wanted to make sure everything looks right. If you'd like to ship them together or make any changes, just let us know!</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-9370622">
           <button class="modal-intent-pill" onclick="selectIntent('9370622', 'protect', null, 'contact', 'Will contact customer')">Contact customer</button>
           <button class="modal-intent-pill" onclick="selectIntent('9370622', 'protect', null, 'handled', 'Already handled')">Already handled</button>
-          <button class="modal-intent-pill dismiss" onclick="selectIntent('9370622', 'protect', null, 'not-duplicate', 'Not a duplicate')">Not a duplicate</button>
+          <button class="modal-intent-pill dismiss" onclick="selectIntent('9370622', 'protect', null, 'not-duplicate', 'All good, no action')">Looks fine</button>
         </div>
         <div class="modal-intent-confirm" id="confirm-9370622">
           <div class="modal-intent-confirm-label"><span class="check">&#10003;</span><span id="confirm-text-9370622"></span></div>
           <div class="modal-note-label">What did you decide to do? (optional)</div>
-          <textarea class="modal-note-input" placeholder="e.g. Contacted via email, confirmed duplicate"></textarea>
+          <textarea class="modal-note-input" placeholder="e.g. Contacted via email, customer confirmed both orders"></textarea>
           <button class="modal-done-btn" onclick="handleModalAction('modal-9370622', 'protect', null, pendingIntent)">Done</button>
         </div>
       </div>
@@ -4052,7 +4070,7 @@
             <div class="order-date">26 Feb 2026</div>
             <div class="order-products">Checker Toffee Vegan Leather Mat - Mega &times;1<br/>Checker Toffee Play Cube &times;2<br/>Checker Toffee Support Pillow &times;1</div>
             <div class="order-amount">$613</div>
-            <div class="order-duplicate-tag">likely duplicate</div>
+            <div class="order-duplicate-tag">similar order</div>
           </div>
           <span class="order-gap-pill">+2 days</span>
         </div>
@@ -4072,11 +4090,11 @@
         <div class="modal-hero-detail">6 orders over 4.5 years, same design</div>
         <div class="modal-when-tag">Latest order 24 Feb</div>
       </div>
-      <div class="modal-insight">From a nursing pillow cover to a play tent &mdash; 4.5 years and 6 orders, every one in the Mudcloth design family. Emma has grown with the brand through every stage of her child's life.</div>
+      <div class="modal-insight">From a nursing pillow cover to a play tent. 4.5 years and 6 orders, every one in the Mudcloth design family. Emma has grown with the brand through every stage of her child's life.</div>
       <div class="modal-action-area">
         <div class="modal-draft-box">
           <div class="modal-draft-header"><span class="modal-draft-label">Draft note</span><span class="modal-draft-hint">click to edit</span></div>
-          <div class="modal-draft-text" contenteditable="true">You've been part of the Mudcloth family for over four years now &mdash; from the very first nursing pillow cover to this play tent. We noticed, and we're grateful. This one's on us.</div>
+          <div class="modal-draft-text" contenteditable="true">You've been part of the Mudcloth family for over four years now, from the very first nursing pillow cover to this play tent. We noticed, and we're grateful. This one's on us.</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-7131325">
@@ -4162,11 +4180,11 @@
         <div class="modal-hero-detail">137 orders in 3 years, 53 designs</div>
         <div class="modal-when-tag">Latest order 22 Feb</div>
       </div>
-      <div class="modal-insight">Play mats every few days across 53 designs &mdash; 137 orders in 3 years. Almost certainly a daycare, gym, or small retailer. The relationship has been steady for years but entirely informal.</div>
+      <div class="modal-insight">Play mats every few days across 53 designs: 137 orders in 3 years. Almost certainly a daycare, gym, or small retailer. The relationship has been steady for years but entirely informal.</div>
       <div class="modal-action-area">
         <div class="modal-draft-box">
           <div class="modal-draft-header"><span class="modal-draft-label">Draft message</span><span class="modal-draft-hint">click to edit</span></div>
-          <div class="modal-draft-text" contenteditable="true">Hey Priya, we've noticed you've been ordering with us regularly for over three years &mdash; thank you for the continued trust. We'd love to understand your setup better and see if there's a way to make things easier, like wholesale pricing or streamlined ordering. Would you be open to a quick chat?</div>
+          <div class="modal-draft-text" contenteditable="true">Hey Priya, we've noticed you've been ordering with us regularly for over three years, and we really appreciate the continued trust. We'd love to understand your setup better and see if there's a way to make things easier, like wholesale pricing or streamlined ordering. Would you be open to a quick chat?</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-2461950">
@@ -4244,11 +4262,11 @@
         <div class="modal-hero-detail">$158 &rarr; $372 &rarr; $618 &rarr; $740</div>
         <div class="modal-when-tag">Latest order 23 Feb</div>
       </div>
-      <div class="modal-insight">Four orders in 14 months, always the Checker pattern &mdash; each one larger than the last. The latest at $740 is nearly 5x her first. Her trust has been growing steadily with every purchase.</div>
+      <div class="modal-insight">Four orders in 14 months, always the Checker pattern, each one larger than the last. The latest at $740 is nearly 5x her first. Her trust has been growing steadily with every purchase.</div>
       <div class="modal-action-area">
         <div class="modal-draft-box">
           <div class="modal-draft-header"><span class="modal-draft-label">Draft note</span><span class="modal-draft-hint">click to edit</span></div>
-          <div class="modal-draft-text" contenteditable="true">Your Checker collection has grown beautifully &mdash; from the first blanket to an Epic mat and beyond. Thank you for your continued trust.</div>
+          <div class="modal-draft-text" contenteditable="true">Your Checker collection has grown beautifully, from the first blanket to an Epic mat and beyond. Thank you for your continued trust.</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-2277118">
@@ -4324,7 +4342,7 @@
             <span class="modal-draft-label">Draft message</span>
             <span class="modal-draft-hint">click to edit</span>
           </div>
-          <div class="modal-draft-text" contenteditable="true">Welcome back &mdash; it's been a while! Hope the Bold Stripe tent is a hit. It's wonderful to see families grow with us.</div>
+          <div class="modal-draft-text" contenteditable="true">Welcome back! It's been a while. Hope the Bold Stripe tent is a hit. It's wonderful to see families grow with us.</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-5503037">
@@ -4393,7 +4411,7 @@
             <span class="modal-draft-label">Draft message</span>
             <span class="modal-draft-hint">click to edit</span>
           </div>
-          <div class="modal-draft-text" contenteditable="true">Your loyalty to Sage has been wonderful to see &mdash; from those early orders to now expanding outdoors. Hope you enjoy the picnic blanket.</div>
+          <div class="modal-draft-text" contenteditable="true">Your loyalty to Sage has been wonderful to see, from those early orders to now expanding outdoors. Hope you enjoy the picnic blanket.</div>
         </div>
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-amanda">
@@ -4480,7 +4498,7 @@
         <div class="modal-hero-detail">6 orders in 3 months, including 3 failed reorders</div>
         <div class="modal-when-tag">Latest order Feb 2026</div>
       </div>
-      <div class="modal-insight">Lisa tried to reorder a playpen three times &mdash; each attempt came through as $0. She navigated this patiently and came back with enrichment accessories. A small gesture acknowledges loyalty through friction, not just through routine purchases.</div>
+      <div class="modal-insight">Lisa tried to reorder a playpen three times, and each attempt came through as $0. She navigated this patiently and came back with enrichment accessories. A small gesture acknowledges loyalty through friction, not just through routine purchases.</div>
       <div class="modal-action-area">
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-lisa">
@@ -4571,7 +4589,7 @@
         <div class="modal-hero-detail">Epic mat &rarr; 4 cubes &rarr; 3 cubes + blanket</div>
         <div class="modal-when-tag">Latest order Feb 2026</div>
       </div>
-      <div class="modal-insight">Started with an Epic mat, then 4 cubes at 112 days, then 3 more cubes and a blanket just 21 days later. The cadence accelerated sharply. This is a collector mid-build &mdash; a note that names the growing collection would land.</div>
+      <div class="modal-insight">Started with an Epic mat, then 4 cubes at 112 days, then 3 more cubes and a blanket just 21 days later. The cadence accelerated sharply. This is a collector mid-build, and a note that names the growing collection would land.</div>
       <div class="modal-action-area">
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-david">
@@ -4631,7 +4649,7 @@
         <div class="modal-hero-detail">Same design at 3 sizes, then a full pivot</div>
         <div class="modal-when-tag">Latest order Feb 2026</div>
       </div>
-      <div class="modal-insight">Four orders tracking a colourway arc: Checker Matcha at Standard, then Mega, then Epic &mdash; then a full pivot to Checker Toffee. She explored one aesthetic completely before moving to the next. A note acknowledging the transition would feel specific and perceptive.</div>
+      <div class="modal-insight">Four orders tracking a colourway arc: Checker Matcha at Standard, then Mega, then Epic, before a full pivot to Checker Toffee. She explored one aesthetic completely before moving to the next. A note acknowledging the transition would feel specific and perceptive.</div>
       <div class="modal-action-area">
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-kate">
@@ -4700,7 +4718,7 @@
         <div class="modal-hero-detail">82 days of activity after a 1,100-day gap</div>
         <div class="modal-when-tag">Latest order Feb 2026</div>
       </div>
-      <div class="modal-insight">One mat purchase, then nothing for over 3 years. Then two rapid orders in 82 days post-reactivation. The return itself is the signal &mdash; a quiet welcome-back note acknowledges the return without presuming permanence.</div>
+      <div class="modal-insight">One mat purchase, then nothing for over 3 years. Then two rapid orders in 82 days post-reactivation. The return itself is the signal. A quiet welcome-back note acknowledges the return without presuming permanence.</div>
       <div class="modal-action-area">
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-sarah-t">
@@ -4760,7 +4778,7 @@
         <div class="modal-hero-detail">389 days between orders</div>
         <div class="modal-when-tag">Latest order Feb 2026</div>
       </div>
-      <div class="modal-insight">Returned after over a year, choosing the Imperfect/value range this time. A quiet welcome back &mdash; no ask, no explanation needed. She came back on her own terms.</div>
+      <div class="modal-insight">Returned after over a year, choosing the Imperfect/value range this time. A quiet welcome back. No ask, no explanation needed. She came back on her own terms.</div>
       <div class="modal-action-area">
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-michelle">
@@ -4811,7 +4829,7 @@
         <div class="modal-hero-detail">653 days between orders</div>
         <div class="modal-when-tag">Latest order Feb 2026</div>
       </div>
-      <div class="modal-insight">Mat-focused purchase history, then a 653-day gap. Returned with an accessory purchase &mdash; the product system brought her back into a different category. A light acknowledgment of her return.</div>
+      <div class="modal-insight">Mat-focused purchase history, then a 653-day gap. Returned with an accessory purchase. The product system brought her back into a different category. A light acknowledgment of her return.</div>
       <div class="modal-action-area">
         <div class="modal-intent-label">What will you do?</div>
         <div class="modal-intent-pills" id="pills-clare">
@@ -4861,9 +4879,9 @@
 <!-- Welcome Overlay -->
 <div class="welcome-overlay" id="welcome-overlay">
   <div class="welcome-card">
-    <div class="welcome-icon"><svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="13" r="11" fill="#E8612A"/><rect x="14.5" y="22" width="3" height="9" rx="1.5" fill="#E8612A"/><circle cx="16" cy="13" r="7" fill="#fff" opacity="0.25"/><circle cx="13" cy="11" r="2.5" fill="#fff" opacity="0.4"/></svg></div>
+    <div class="welcome-icon"><img src="https://cdn.referralcandy.com/webflow/logo-referralcandy.webp" alt="ReferralCandy" style="height: 32px; width: auto;"></div>
     <div class="welcome-title">Moments by ReferralCandy</div>
-    <div class="welcome-text">A preview of <strong>Moments</strong> &mdash; built from your real order data (Feb 20&ndash;26). Customer names are placeholders; the orders are real.<br/><br/>We analysed 231 customers and surfaced the ones worth acting on right now. Walk through as you normally would &mdash; click the cards, and share your honest reactions.</div>
+    <div class="welcome-text">A preview of <strong>Moments</strong>, built from your real order data (Feb 20&ndash;26). Customer names are placeholders; the orders are real.<br/><br/>We analysed 231 customers and surfaced the ones worth acting on right now. Walk through as you normally would, click the cards, and share your honest reactions.</div>
     <button class="welcome-btn" onclick="dismissWelcome()">Let's go</button>
   </div>
 </div>
@@ -5024,7 +5042,7 @@
       var protectMsg = {
         'contact': 'Will contact customer',
         'handled': 'Marked as handled',
-        'not-duplicate': 'Dismissed — not a duplicate'
+        'not-duplicate': 'Looks fine — no action needed'
       };
       showToastWithUndo(protectMsg[intent] || 'Marked as handled');
     } else if (type === 'gift' || type === 'prompt' || type === 'inform') {
